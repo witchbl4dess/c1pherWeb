@@ -11,6 +11,9 @@ export default function HomePage() {
             <LoginButton>
             <Button variant="secondary" size="lg">join us!</Button>
             </LoginButton>
+            <div>
+              
+            </div>
           </div>
         </div>
     </main>
