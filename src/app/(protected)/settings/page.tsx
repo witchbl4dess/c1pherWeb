@@ -2,7 +2,7 @@ import React from 'react'
 import { auth, signOut } from '@/auth'
 
 const settingsPage = async () => {
-    const session = await auth();
+  const session = await auth();
   return (
     <div>{JSON.stringify(session)}
     <form action={async () => {
