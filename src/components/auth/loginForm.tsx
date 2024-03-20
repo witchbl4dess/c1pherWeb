@@ -13,8 +13,11 @@ import { login } from '@/actions/login';
 import { useTransition } from 'react';
 import { useState } from 'react';
 import * as z from "zod";
+import { useSearchParams } from 'next/navigation';
 
 export const LoginForm = () => {
+    const searchParams = useSearchParams();
+    const urlError = searchParams.get("error") === "OAuthAccountNotLinked" ? "email already use in different provider!" : "";
     const [error, setError] = useState<string | undefined>("");
     const [succes, setSucces] = useState<string | undefined>("");
     const [isPending, startTransition] = useTransition();
@@ -32,8 +35,8 @@ export const LoginForm = () => {
         startTransition(() => {
             login(values)
             .then((data) => {
-                setError(data.error);
-                setSucces(data.success);
+                setError(data?.error);
+                setSucces(succes);
             })
         });
     }
@@ -62,7 +65,7 @@ export const LoginForm = () => {
                             </FormItem>
                         )} />
                     </div>
-                    <FormError message={error} />
+                    <FormError message={error || urlError} />
                     <FormSucces message={succes} />
                     <Button type="submit" className="w-full" disabled={isPending}>
                         login
