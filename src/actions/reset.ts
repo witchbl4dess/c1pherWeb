@@ -1,5 +1,7 @@
 "use server";
 
+import { generatePasswordResetToken } from "@/lib/token";
+import { sendPasswordResetMail } from "@/lib/mail";
 import { ResetSchema } from '@/schema/index';
 import { getUserByEmail } from '@/data/user';
 import * as z from "zod";
@@ -17,6 +19,9 @@ export const reset = async (values: z.infer<typeof ResetSchema>) => {
     if (!existingUser) {
         return { error: "user not found" };
     }
+
+    const passwordResetToken = await generatePasswordResetToken(email);
+    await sendPasswordResetMail(passwordResetToken.email, passwordResetToken.token);
 
     return { success: "reset email sent" };
 }
