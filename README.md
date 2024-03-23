@@ -1,30 +1,29 @@
-# How to use a c1pherKey?
+# How to use a cipherKey?
 
-https://www.wikihow.com/Attach-a-USB-Drive-to-Your-Computer
+**Link:** [WikiHow - Attaching a USB Drive to Your Computer](https://www.wikihow.com/Attach-a-USB-Drive-to-Your-Computer)
 
-## Security & Anonymaty
+## Security & Anonymity
 
-* Darknet entrance
-      https://heimdalsecurity.com/blog/how-to-get-on-the-dark-web/
-      * VPN: https://protonvpn.com
-      * TOR: https://www.torproject.org/download/
-* Encryption? ```Pretty Good Privacy```!
-    * https://canarymail.io/blog/pgp-encryption/
-    * GPG4: https://origindev.com/encryption-tut/steps-for-windows/install-gpg4win-with-kleopatra/
-    * openPGP: https://www.openpgp.org
+- **Darknet entrance**
+  - VPN: [ProtonVPN](https://protonvpn.com)
+  - TOR: [Download TOR](https://www.torproject.org/download/)
+- **Encryption?** *Pretty Good Privacy!*
+  - [PGP Encryption](https://canarymail.io/blog/pgp-encryption/)
+  - GPG4: [Install GPG4Win with Kleopatra](https://origindev.com/encryption-tut/steps-for-windows/install-gpg4win-with-kleopatra/)
+  - OpenPGP: [OpenPGP](https://www.openpgp.org)
 
 ### Server
 
-* I can host on my Server!
-* TLS/SSL: https://www.kaspersky.nl/resource-center/definitions/what-is-a-ssl-certificate
-* Domain Name: https://www.freenom.com/fr/index.html?lang=fr
+- **How can we host?**
+- TLS/SSL: [What is an SSL Certificate?](https://www.kaspersky.nl/resource-center/definitions/what-is-a-ssl-certificate)
+- Domain Name: [Freenom](https://www.freenom.com/fr/index.html?lang=fr)
 
 #### Money Money Money
 
-* Niew adress for each transaction?
-* https://help.coinbase.com/en/coinbase/getting-started/crypto-education/glossary/wallet-address
-* Exchanges: https://www.binance.com/en/trade/BTC_USDT?type=spot
-* Mixer: ?don't need, our buiss is not illegal
+- New address for each transaction?
+  - [Wallet Address Glossary](https://help.coinbase.com/en/coinbase/getting-started/crypto-education/glossary/wallet-address)
+- Exchanges: [Binance](https://www.binance.com/en/trade/BTC_USDT?type=spot)
+- Mixer: don't need.
 
 ```
       _       _               
