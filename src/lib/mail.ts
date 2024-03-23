@@ -8,7 +8,7 @@ export const sendPasswordResetMail = async (email: string, token: string) => {
         from: "onboarding@resend.dev",
         to: email,
         subject: "Password reset",
-        text: `<p>You can reset your password by clicking on the following link: <a href="${resetLink}">click-me</a></p>`,
+        html: `<p>You can reset your password by clicking on the following link: <a href="${resetLink}">click-me</a></p>`,
     })
 }
 
@@ -18,6 +18,6 @@ export const sendVerifMail = async (email: string, token: string) => {
         from: "onboarding@resend.dev",
         to: email,
         subject: "Please confirm your email",
-        text: `<p>Please confirm your email by clicking on the following link: <a href="${confirmationLink}">click-me</a></p>`,
+        html: `<p>Please confirm your email by clicking on the following link: <a href="${confirmationLink}">click-me</a></p>`,
     })
 }
