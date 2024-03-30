@@ -19,7 +19,6 @@ export default async function RootLayout({
 }>) {
   const session = await auth();
   return (
-
     <SessionProvider session={session}>
       <html lang="en">
         <body className={font.className}>
