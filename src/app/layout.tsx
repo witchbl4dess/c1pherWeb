@@ -1,3 +1,4 @@
+import { ThemeProvider } from "@/providers/theme-provider";
 import { SessionProvider } from "next-auth/react";
 import { Nunito } from "next/font/google";
 import { auth } from "@/auth";
@@ -18,9 +19,18 @@ export default async function RootLayout({
 }>) {
   const session = await auth();
   return (
+
     <SessionProvider session={session}>
       <html lang="en">
-        <body className={font.className}>{children}</body>
+        <body className={font.className}>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+            >{children}
+            </ThemeProvider>
+          </body>
       </html>
     </SessionProvider>
   );
