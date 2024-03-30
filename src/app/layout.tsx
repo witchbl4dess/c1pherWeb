@@ -1,7 +1,8 @@
-import type { Metadata } from "next";
+import { SessionProvider } from "next-auth/react";
 import { Nunito } from "next/font/google";
+import { auth } from "@/auth";
+import type { Metadata } from "next";
 import "./globals.css";
-import { db } from "@/lib/db";
 
 const font = Nunito({ subsets: ["latin"] });
 
@@ -15,9 +16,12 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const session = await auth();
   return (
-    <html lang="en">
-      <body className={font.className}>{children}</body>
-    </html>
+    <SessionProvider session={session}>
+      <html lang="en">
+        <body className={font.className}>{children}</body>
+      </html>
+    </SessionProvider>
   );
 }
