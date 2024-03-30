@@ -58,9 +58,20 @@ export const LoginForm = () => {
             <Form {...form}>
                 <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
                     <div className="space-y-4">
-                        {
+                        {showTwoFactor && (
+                            <FormField control={form.control} name="code" render={({ field }) => (
+                                <FormItem>
+                                    <FormLabel>Two Factor Authenfication</FormLabel>
+                                    <FormControl>
+                                        <Input {...field} placeholder="123456" disabled={isPending} />
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
+                            )} />
+                        )}
+                        {!showTwoFactor && (
                             <>
-                                <FormField control={form.control} name="email" render={({ field}) => (
+                                <FormField control={form.control} name="email" render={({ field }) => (
                                     <FormItem>
                                         <FormLabel>Email</FormLabel>
                                         <FormControl>
@@ -69,7 +80,7 @@ export const LoginForm = () => {
                                         <FormMessage />
                                     </FormItem>
                                 )} />
-                                <FormField control={form.control} name="password" render={({ field}) => (
+                                <FormField control={form.control} name="password" render={({ field }) => (
                                     <FormItem>
                                         <FormLabel>Password</FormLabel>
                                         <FormControl>
@@ -84,12 +95,12 @@ export const LoginForm = () => {
                                     </FormItem>
                                 )} />
                         </>
-                        }
+                        )}
                     </div>
                     <FormError message={error || urlError} />
                     <FormSucces message={succes} />
                     <Button type="submit" className="w-full" disabled={isPending}>
-                        login
+                        {showTwoFactor ? "Verify" : "Login"}
                     </Button>
                 </form>
             </Form>
