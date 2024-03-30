@@ -20,6 +20,7 @@ const Navbar = async (props: Props) => {
                     <li><Link href="/download">Download</Link></li>
                     <li><Link href="#">Documentation</Link></li>
                     <li><Link href="/about">About</Link></li>
+                    <li><Link href="/dashboard">Dashboard</Link></li>
                 </ul>
             </nav>
             <aside className="flex items-center gap-4">

@@ -11,7 +11,7 @@ const SettingsPage = () => {
   return (
     <div className="bg-white p-10 rounded-xl">
     <form>
-      <button onClick={onClick} type="submit">
+      <button onClick={onClick} type="submit" className="bg-white">
         logout
       </button>
       </form>
