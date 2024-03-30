@@ -25,6 +25,10 @@
 - Exchanges: [Binance](https://www.binance.com/en/trade/BTC_USDT?type=spot)
 - Mixer: don't need.
 
+##### Auth Features
+
+Creadentials provider, OAuth passport (google, github), password recovery, email verification, Two factor auth, user roles, login components, register components, forgot passwd components, error components, login button, logout button, role gate, protect api routes for admin only, protect server action for admin only,
+
 ```
       _       _               
   ___/ |_ __ | |__   ___ _ __ 
