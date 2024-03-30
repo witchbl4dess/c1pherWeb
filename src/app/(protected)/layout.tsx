@@ -1,14 +1,15 @@
-import { NavbarSettings } from "./_components/navbarSettings";
+import Sidebar from "./_components/sidebar/index";
+import React from 'react';
 
 interface ProtectedLayoutProps {
   children: React.ReactNode;
 };
 
-const ProtectedLayout = ({ children }: ProtectedLayoutProps) => {
+const ProtectedLayout = (props: ProtectedLayoutProps) => {
   return ( 
-    <div className="h-full w-full flex flex-col gap-y-10 items-center justify-center text-black">
-      <NavbarSettings />
-      {children}
+    <div className="flex overflow-hidden h-screen">
+      <Sidebar />
+      <div className="w-full">{props.children}</div>
     </div>
    );
 }
