@@ -5,7 +5,10 @@
 
 export const publicRoutes = [
     "/",
-    "/auth/emailVerification"
+    "/auth/emailVerification",
+    "/presentation",
+    "/documentation",
+    "/about",
 ];
 
 /**
@@ -30,4 +33,4 @@ export const apiAuthPrefix = "/api/auth";
  * prefix for api auth routes
  * @type {string}
  */
-export const DEFAULT_LOGIN_REDIRECT = "/settings";
+export const DEFAULT_LOGIN_REDIRECT = "/download";

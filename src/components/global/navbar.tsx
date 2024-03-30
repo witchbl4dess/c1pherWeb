@@ -16,10 +16,10 @@ const Navbar = async (props: Props) => {
             </aside>
             <nav className="absolute left-[50%] top-[50%] transform translate-x-[-50%] translate-y-[-50%] hidden md:block">
                 <ul className="flex items-center gap-4 list-none">
-                    <li><Link href="#">Presention</Link></li>
-                    <li><Link href="#">Download</Link></li>
+                    <li><Link href="/presentation">Presention</Link></li>
+                    <li><Link href="/download">Download</Link></li>
                     <li><Link href="#">Documentation</Link></li>
-                    <li><Link href="#">About</Link></li>
+                    <li><Link href="/about">About</Link></li>
                 </ul>
             </nav>
             <aside className="flex items-center gap-4">
