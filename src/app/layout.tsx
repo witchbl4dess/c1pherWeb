@@ -1,6 +1,7 @@
 import { ThemeProvider } from "@/providers/theme-provider";
 import { SessionProvider } from "next-auth/react";
 import { Nunito } from "next/font/google";
+import { Toaster } from "@/components/ui/sonner";
 import { auth } from "@/auth";
 import type { Metadata } from "next";
 import "./globals.css";
@@ -27,7 +28,8 @@ export default async function RootLayout({
             defaultTheme="dark"
             enableSystem
             disableTransitionOnChange
-            >{children}
+            ><Toaster />
+              {children}
             </ThemeProvider>
           </body>
       </html>
