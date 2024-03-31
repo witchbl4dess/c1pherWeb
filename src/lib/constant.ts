@@ -66,7 +66,6 @@ export const products = [
 
 export const menuOptions = [
   { name: 'Dashboard', Component: Home, href: '/dashboard' },
-  { name: 'Admin', Component: Workflows, href: '/admin' },
   { name: 'Settings', Component: Settings, href: '/settings' },
   { name: 'Client', Component: Category, href: '/client' },
   { name: 'Uptime', Component: Templates, href: '/uptime' },
