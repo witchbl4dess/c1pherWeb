@@ -1,8 +1,11 @@
 "use client";
 
+import { useCurrentRole } from "@/hooks/useCurrentRole";
+
 const AdminPage = () => {
+    const role = useCurrentRole();
     return (
-        <div>admin</div>
+        <div>role {role}</div>
     );
 };
 
