@@ -5,6 +5,7 @@ import { UserRole } from "@prisma/client";
 import { getUserById } from "@/data/user";
 import authConfig from "@/auth.config";
 import { db } from "@/lib/db";
+import { getAccountByUserId } from "./data/account";
 
 export const { handlers: { GET, POST }, auth, signIn, signOut } = NextAuth({
     pages: {
@@ -45,12 +46,21 @@ export const { handlers: { GET, POST }, auth, signIn, signOut } = NextAuth({
             if (session.user) {
                 session.user.isTwoFactorEnabled = token.isTwoFactorEnabled as boolean;
             }
+            if (session.user && token.name && token.email && token.isOAuth) {
+                session.user.name = token.name;
+                session.user.email = token.email;
+                session.user.isOAuth = token.isOAuth as boolean;
+            }
             return session;
         },
         async jwt({ token }) {
             if (!token.sub) return token;
             const existingUser = await getUserById(token.sub);
             if (!existingUser) return token;
+            const existingAcc = await getAccountByUserId(existingUser.id);
+            token.isOAuth = !!existingAcc;
+            token.name = existingUser.name;
+            token.email = existingUser.email;
             token.role = existingUser.role;
             token.isTwoFactorEnabled = existingUser.isTwoFactorEnabled;
             return token;
