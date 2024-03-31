@@ -1,9 +1,11 @@
-import { auth } from "@/auth";
+"use client";
+
 import { currentUser } from "@/hooks/auth";
 import { UserInfo } from "../_components/admin/userInfo";
+import { useCurrentUser } from "@/hooks/useCurrentUser";
 
-const ClientPage = async () => {
-    const user = await currentUser();
+const ClientPage = () => {
+    const user = useCurrentUser();
     return (
         <div className="flex justify-center items-center h-full">
             <div>
