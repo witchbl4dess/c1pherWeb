@@ -1,7 +1,7 @@
 "use client";
 
 import { settings } from "@/actions/settings";
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
+import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { useCurrentUser } from "@/hooks/useCurrentUser";
 import { SettingsSchema } from "@/schema";
@@ -11,7 +11,12 @@ import { useForm } from "react-hook-form";
 import { FormError } from "@/components/form-error";
 import { FormSucces } from "@/components/form-succes";
 import { z } from "zod";
+import { UserRole } from "@prisma/client";
 import { useSession } from "next-auth/react";
+import { Button } from "@/components/ui/button";
+import { Loader2 } from "lucide-react";
+import { Switch } from "@/components/ui/switch";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 
 type Props = {};
 
@@ -71,21 +76,57 @@ const ProfileForm = (props: Props) => {
                 <FormField
                     disabled={isLoading || true}
                     control={form.control}
-                    name="email"
+                    name="role"
                     render={({ field }) => (
                     <FormItem>
-                        <FormLabel className="text-lg">Email</FormLabel>
+                        <FormLabel className="text-lg">Rank</FormLabel>
+                        <Select disabled={isLoading || true} onValueChange={field.onChange} defaultValue={field.value}>
                         <FormControl>
-                        <Input
-                            placeholder="Email"
-                            type="email"
-                            {...field}
-                        />
+                            <SelectTrigger>
+                                <SelectValue placeholder="Select a rank" />
+                            </SelectTrigger>
+                        </FormControl>
+                        <SelectContent>
+                            <SelectItem value={UserRole.ADMIN}>
+                                Admin
+                            </SelectItem>
+                            <SelectItem value={UserRole.USER}>
+                                User
+                            </SelectItem>
+                        </SelectContent>
+                        </Select>
+                        <FormMessage />
+                    </FormItem>
+                    )}
+                />
+                <FormField
+                    control={form.control}
+                    name="isTwoFactorEnabled"
+                    render={({ field }) => (
+                    <FormItem>
+                        <FormLabel className="text-lg">Two Factor</FormLabel>
+                        <FormDescription>Eable two factor authentification to your account</FormDescription>
+                        <FormControl>
+                        <Switch
+                          disabled={isLoading}
+                          checked={field.value}
+                          onCheckedChange={field.onChange}
+                        />                        
                         </FormControl>
                         <FormMessage />
                     </FormItem>
                     )}
                 />
+                <Button type="submit" className="self-start hover:bg-[#2F006B] hover:text-white">
+                    {isLoading ? (
+                        <>
+                        <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                        Saving
+                        </>
+                    ) : (
+                        'Save User Settings'
+                    )}
+                </Button>
             </form>
         </Form>
     )
