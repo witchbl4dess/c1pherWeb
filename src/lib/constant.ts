@@ -66,7 +66,7 @@ export const products = [
 
 export const menuOptions = [
   { name: 'Dashboard', Component: Home, href: '/dashboard' },
-  { name: 'Workflows', Component: Workflows, href: '/workflows' },
+  { name: 'Admin', Component: Workflows, href: '/admin' },
   { name: 'Settings', Component: Settings, href: '/settings' },
   { name: 'Client', Component: Category, href: '/client' },
   { name: 'Billing', Component: Payment, href: '/billing' },
