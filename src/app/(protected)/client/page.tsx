@@ -1,10 +1,14 @@
 import { auth } from "@/auth";
+import { currentUser } from "@/hooks/auth";
+import { UserInfo } from "../_components/admin/userInfo";
 
 const ClientPage = async () => {
-    const session = await auth();
+    const user = await currentUser();
     return (
-        <div>
-            {JSON.stringify(session)}
+        <div className="flex justify-center items-center h-full">
+            <div>
+                <UserInfo label="client info" user={user} />
+            </div>
         </div>
     );
 }
