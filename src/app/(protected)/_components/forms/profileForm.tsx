@@ -1,9 +1,94 @@
-import React from "react";
+"use client";
+
+import { settings } from "@/actions/settings";
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
+import { useCurrentUser } from "@/hooks/useCurrentUser";
+import { SettingsSchema } from "@/schema";
+import { zodResolver } from "@hookform/resolvers/zod";
+import React, { startTransition, useState, useTransition } from "react";
+import { useForm } from "react-hook-form";
+import { FormError } from "@/components/form-error";
+import { FormSucces } from "@/components/form-succes";
+import { z } from "zod";
+import { useSession } from "next-auth/react";
 
 type Props = {};
 
 const ProfileForm = (props: Props) => {
-    return <div>profileForm</div>
+    const [isLoading, startTransition] = useTransition();
+    const [error, setError] = useState<string | undefined>();
+    const [succes, setSucces] = useState<string | undefined>();
+    const { update } = useSession();
+    const user = useCurrentUser();
+    const form = useForm<z.infer<typeof SettingsSchema>>({
+        resolver: zodResolver(SettingsSchema),
+        defaultValues: {
+          password: undefined,
+          newPassword: undefined,
+          name: user?.name || undefined,
+          email: user?.email || undefined,
+          role: user?.role || undefined,
+          isTwoFactorEnabled: user?.isTwoFactorEnabled || undefined,
+        }
+      });
+      const onSubmit = (values: z.infer<typeof SettingsSchema>) => {
+        startTransition(() => {
+          settings(values)
+            .then((data) => {
+              if (data.error) {
+                setError(data.error);
+              }
+    
+              if (data.success) {
+                update();
+                setSucces(data.success);
+              }
+            })
+            .catch(() => setError("Something went wrong!"));
+        });
+      }
+    return (
+        <Form {...form}>
+            <form className="flex flex-col gap-6" onSubmit={form.handleSubmit(onSubmit)}>
+                <FormField
+                    disabled={isLoading}
+                    control={form.control}
+                    name="name"
+                    render={({ field }) => (
+                    <FormItem>
+                        <FormLabel className="text-lg">User full name</FormLabel>
+                        <FormControl>
+                        <Input
+                            {...field}
+                            placeholder="Name"
+                        />
+                        </FormControl>
+                        <FormMessage />
+                    </FormItem>
+                    )}
+                />
+                <FormField
+                    disabled={isLoading || true}
+                    control={form.control}
+                    name="email"
+                    render={({ field }) => (
+                    <FormItem>
+                        <FormLabel className="text-lg">Email</FormLabel>
+                        <FormControl>
+                        <Input
+                            placeholder="Email"
+                            type="email"
+                            {...field}
+                        />
+                        </FormControl>
+                        <FormMessage />
+                    </FormItem>
+                    )}
+                />
+            </form>
+        </Form>
+    )
 }
 
 export default ProfileForm;

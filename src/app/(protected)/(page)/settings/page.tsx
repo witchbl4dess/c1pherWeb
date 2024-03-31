@@ -1,4 +1,5 @@
 import React from 'react';
+import ProfileForm from '../../_components/forms/profileForm';
 
 type Props = {};
 
@@ -13,6 +14,7 @@ const SettingsPage = (props: Props) => {
         <h2 className="text-2xl font-bold">User Profile</h2>
         <p className="text-base text-white/50">Add or update your account informations</p>
       </div>
+      <ProfileForm />
     </div>
   </div>
    );
