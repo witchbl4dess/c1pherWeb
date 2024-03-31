@@ -1,17 +1,19 @@
-import Sidebar from "./_components/sidebar/index";
-import React from 'react';
+import React from 'react'
+import Sidebar from "@/app/(protected)/_components/sideBar.tsx"
+import InfoBar from './_components/infoBar'
 
-interface ProtectedLayoutProps {
-  children: React.ReactNode;
-};
+type Props = { children: React.ReactNode }
 
-const ProtectedLayout = (props: ProtectedLayoutProps) => {
-  return ( 
+const Layout = (props: Props) => {
+  return (
     <div className="flex overflow-hidden h-screen">
       <Sidebar />
-      <div className="w-full">{props.children}</div>
+      <div className="w-full">
+        <InfoBar />
+        {props.children}
+      </div>
     </div>
-   );
+  )
 }
- 
-export default ProtectedLayout;
+
+export default Layout

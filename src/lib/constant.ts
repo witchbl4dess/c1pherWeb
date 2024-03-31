@@ -69,7 +69,6 @@ export const menuOptions = [
   { name: 'Admin', Component: Workflows, href: '/admin' },
   { name: 'Settings', Component: Settings, href: '/settings' },
   { name: 'Client', Component: Category, href: '/client' },
-  { name: 'Billing', Component: Payment, href: '/billing' },
-  { name: 'Templates', Component: Templates, href: '/templates' },
+  { name: 'Uptime', Component: Templates, href: '/uptime' },
   { name: 'Logs', Component: Logs, href: '/logs' },
 ]
