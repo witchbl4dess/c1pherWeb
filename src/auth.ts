@@ -7,7 +7,7 @@ import authConfig from "@/auth.config";
 import { db } from "@/lib/db";
 import { getAccountByUserId } from "./data/account";
 
-export const { handlers: { GET, POST }, auth, signIn, signOut } = NextAuth({
+export const { handlers: { GET, POST }, auth, signIn, signOut, unstable_update } = NextAuth({
     pages: {
         signIn: "/auth/login",
         error: "/auth/error",
